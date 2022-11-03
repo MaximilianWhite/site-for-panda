@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">{% if request.path == '/admin/' %} Админ-панель {% else %} Корпорация монстров {% endif %}</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    {% url 'home' as urlhome %}
+                    <a class="nav-link {% if urlhome  == request.path %} active {% endif %}" href="{% url 'home' %}">Главная страница</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                {% if auth.auth != None %}
+                    <a class="text-decoration-none" href="{% url 'admin-panel' %}">Добро пожаловать, {{ auth.name|capfirst }}!</a> | <a class="text-decoration-none" href="{% url 'quite' %}">Выход</a>
+                {% else %}
+                    <a class="text-decoration-none" href="{% url 'createuser' %}">Регистрация</a> | <a class="text-decoration-none" href="{% url 'loginuser' %}">Авторизация</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    
+</nav>

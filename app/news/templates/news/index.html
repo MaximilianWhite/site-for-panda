@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    {% for item in news %}
+        <div class="card mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ item.category.get_absolute_url }}" class="card-text mb-2"><small class="text-muted">{{ item.category|capfirst }}</small></a>
+                    <h5 class="card-title">{{ item.title|capfirst }}</h5>
+                    <p class="card-text">{{ item.content|capfirst|safe|linebreaks|truncatewords:50 }}</p>
+                    <p class="card-text"><small class="text-muted">{{ item.created_at }}</small></p>
+                </div>
+                <a class="btn btn-primary" href="{{ item.get_url_show }}" role="button">Подробнее</a>
+                {% if item.photo %}
+                    <img class="card-img-bottom" src="{{ item.photo.url }}" alt="Card image cap">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

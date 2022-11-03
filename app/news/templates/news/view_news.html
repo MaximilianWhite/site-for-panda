@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text mb-2"><small class="text-muted">{{ news.category }}</small></p>
+                <h5 class="card-title">{{ news.title|capfirst }}</h5>
+                <p class="card-text">{{ news.content|capfirst }}</p>
+                <p class="card-text"><small class="text-muted">{{ news.created_at }}</small></p>
+            </div>
+            {% if news.photo %}
+                <img class="card-img-bottom" src="{{ news.photo.url }}" alt="Card image cap">
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

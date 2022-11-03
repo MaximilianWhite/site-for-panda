@@ -1,0 +1,7 @@
+{% load category_news %}
+<div class="list-group col-md-2">
+    {% get_list_categories as categories %}
+    {% for item in categories %}
+        <a href="{{ item.get_url_show }}" class="list-group-item list-group-item-action {% if item.get_url_show == request.path %} active {% endif %}">{{ item.title }} <span class="badge bg-primary rounded-pill">{{ item.cnt }}</span></a>
+    {% endfor %}
+</div>

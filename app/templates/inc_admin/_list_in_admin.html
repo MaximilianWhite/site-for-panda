@@ -1,0 +1,13 @@
+<div class="col-md-15">
+    {% include 'inc/_message.html' %}
+    <h1>{{ title }}</h1>
+    <div class="container">
+        {% if type_list == 'news' %}
+            {% include 'inc_admin/inc_admin_lists/__list_news.html' %}
+        {% elif type_list == 'category' %}
+            {% include 'inc_admin/inc_admin_lists/__list_categorys.html' %}
+        {% elif type_list == 'users' %}
+            {% include 'inc_admin/inc_admin_lists/__list_users.html' %}
+        {% endif %}
+    </div>
+</div>

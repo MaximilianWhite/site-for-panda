@@ -1,0 +1,19 @@
+<div class="list-group col-md-2">
+    {% url 'admin-panel-createnews' as createnews_url %}
+    <a href="{{ createnews_url }}" class="list-group-item list-group-item-action {% if createnews_url == request.path %} active {% endif %}">Создание новости</a>
+    
+    {% url 'admin-panel-listnews' as listnews_url %}
+    <a href="{{ listnews_url }}" class="list-group-item list-group-item-action {% if listnews_url == request.path %} active {% endif %}">Редактирование новости</a>
+    
+    {% url 'admin-panel-createcategory' as createcategory_url %}
+    <a href="{{ createcategory_url }}" class="list-group-item list-group-item-action {% if createcategory_url == request.path %} active {% endif %}">Создание категории</a>
+    
+    {% url 'admin-panel-listcategory' as listcategory_url %}
+    <a href="{{ listcategory_url }}" class="list-group-item list-group-item-action {% if listcategory_url == request.path %} active {% endif %}">Редактирование категории</a>
+    
+    {% url 'admin-panel-createuser' as createuser_url %}
+    <a href="{{ createuser_url }}" class="list-group-item list-group-item-action {% if createuser_url == request.path %} active {% endif %}">Создание пользователя</a>
+    
+    {% url 'admin-panel-listuser' as listuser_url %}
+    <a href="{{ listuser_url }}" class="list-group-item list-group-item-action {% if listuser_url == request.path %} active {% endif %}">Редактирование пользователя</a>
+</div>

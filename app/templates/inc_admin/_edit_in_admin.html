@@ -1,0 +1,19 @@
+<div class="col-md-10">
+    {% include 'inc/_message.html' %}
+    <h1>{{ title }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {% for field in form %}
+            
+                {{ field.label_tag }} {{ field }}
+                <div style="color: red">
+                    {{ field.errors }}
+                </div>
+            
+            {% endfor %}
+        </div>
+        <button type="sumbit" class="btn btn-primary mt-2">Сохранить</button>
+        <a class="btn btn-primary mt-2" href="{{ edit_admin.get_url_deletes }}">Удалить</a>
+    </form>
+</div>

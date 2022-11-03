@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+    {% include 'inc/_sidebar_adminpanel.html' %}
+{% endblock %}
+
+{% block content %}
+    {% if type == none %}
+    <div class="mb-3">
+        {% include 'inc/_message.html' %}
+        <h1>Добро пожаловать, {{ auth.name|capfirst }}</h1>
+    </div>
+    {% elif type == 'create_in_admin' %}
+        {% include 'inc_admin/_create_in_admin.html' %}
+    {% elif type == 'list_in_admin' %}
+        {% include 'inc_admin/_list_in_admin.html' %}
+    {% elif type == 'edit_in_admin' %}
+        {% include 'inc_admin/_edit_in_admin.html' %}
+    {% endif %}
+{% endblock %}
